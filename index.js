@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const {MongoClient} = require('mongodb');
 const mongoose = require("mongoose");
 const isEmpty = require('lodash.isempty');
 app.use(express.json());
