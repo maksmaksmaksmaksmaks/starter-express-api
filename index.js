@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const isEmpty = require('lodash.isempty');
 app.use(express.json());
 
