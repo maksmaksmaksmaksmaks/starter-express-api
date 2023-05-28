@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const {MongoClient} = require('mongodb');
+const mongoose = require("mongoose");
 const isEmpty = require('lodash.isempty');
 app.use(express.json());
 
@@ -11,10 +12,16 @@ app.all('/', (req, res) => {
 app.listen(process.env.PORT || 3000)
 
 
+mongoose.set("strictQuery", false);
+const mongoBD="mongodb+srv://maksmarolt:maksmarolt@cluster0.5npdmim.mongodb.net/?retryWrites=true&w=majority";
+main().catch((err) => console.log(err));
+async function main() {
+    await mongoose.connect(mongoDB);
+}
 
 app.post('/login', async (req, res)=> {
     const uri = "mongodb+srv://maksmarolt:maksmarolt@cluster0.5npdmim.mongodb.net/?retryWrites=true&w=majority";
-    const client = new MongoClient(uri);
+    const client = new mongoose(uri);
     try {
         await client.connect();
         const users =client.db("Cluster0").collection("login");
